@@ -8,9 +8,9 @@
   const APK_URL = "downloads/ai-bridge-lite.apk";              // reemplaza
 
   const MSG = {
-    gratis: "[TEXTO_CHATGPT: mensaje para $0]",
-    pago: "[TEXTO_CHATGPT: mensaje de agradecimiento]"
-  };
+  gratis: "¡Perfecto! Puedes comenzar con una contribución de $0. Descarga AI Bridge Lite y descubre todo lo que puedes crear.",
+  pago: "¡Gracias por apoyar AI Bridge Lite! Tu contribución nos ayuda a mantener el proyecto, mejorar sus herramientas y desarrollar nuevas funciones."
+};
 
   const $ = (id) => document.getElementById(id);
   const input = $("pay-amount");
