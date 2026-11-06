@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="AI Bridge Lite: puente de contexto e IA flotante para desarrollo móvil.">
+  <title>AI Bridge Lite</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header id="hero">
+    <h1 data-copy="hero_titulo">[TEXTO_CHATGPT: título]</h1>
+    <p data-copy="hero_subtitulo">[TEXTO_CHATGPT: subtítulo]</p>
+    <a href="#descarga" class="btn btn-primary" id="btn-ir-descarga">[TEXTO_CHATGPT: CTA]</a>
+  </header>
+
+  <main>
+
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas">
+      <h2 data-copy="feat_titulo">[TEXTO_CHATGPT]</h2>
+      <ul class="cards">
+        <li class="card" data-feature="captura"><h3>[TEXTO_CHATGPT]</h3><p>[TEXTO_CHATGPT]</p></li>
+        <li class="card" data-feature="codigo"><h3>[TEXTO_CHATGPT]</h3><p>[TEXTO_CHATGPT]</p></li>
+        <li class="card" data-feature="secuencia"><h3>[TEXTO_CHATGPT]</h3><p>[TEXTO_CHATGPT]</p></li>
+        <li class="card" data-feature="perfiles"><h3>[TEXTO_CHATGPT]</h3><p>[TEXTO_CHATGPT]</p></li>
+      </ul>
+    </section>
+
+    <!-- DESCARGA + PAGO DINÁMICO -->
+    <section id="descarga">
+      <h2 data-copy="pago_titulo">[TEXTO_CHATGPT]</h2>
+
+      <div id="pay-box">
+        <label for="pay-amount" data-copy="pago_label">[TEXTO_CHATGPT: Paga lo que quieras]</label>
+
+        <div class="pay-row">
+          <span class="pay-symbol" aria-hidden="true">$</span>
+          <input type="number" id="pay-amount" inputmode="decimal"
+                 min="0" max="100" step="1" value="0" autocomplete="off">
+          <span class="pay-currency">USD</span>
+        </div>
+
+        <input type="range" id="pay-slider" min="0" max="100" step="1" value="0"
+               aria-label="Monto a pagar en USD">
+
+        <div class="pay-presets" role="group" aria-label="Montos rápidos">
+          <button type="button" class="chip" data-amount="0">$0</button>
+          <button type="button" class="chip" data-amount="5">$5</button>
+          <button type="button" class="chip" data-amount="10">$10</button>
+          <button type="button" class="chip" data-amount="25">$25</button>
+          <button type="button" class="chip" data-amount="100">$100</button>
+        </div>
+
+        <p id="pay-msg" role="status" aria-live="polite"></p>
+      </div>
+
+      <!-- Descarga directa APK: reemplaza href por la URL real -->
+      <a id="btn-apk" class="btn btn-primary btn-block"
+         href="downloads/ai-bridge-lite.apk" download
+         data-apk-version="0.1.0">
+        <span id="btn-apk-label">[TEXTO_CHATGPT: Descargar APK]</span>
+      </a>
+      <small id="apk-info" data-copy="apk_info">[TEXTO_CHATGPT: versión, peso, requisitos]</small>
+    </section>
+
+    <!-- SUSCRIPCIÓN -->
+    <section id="suscripcion">
+      <h2 data-copy="sub_titulo">[TEXTO_CHATGPT]</h2>
+      <ul class="benefits">
+        <li data-benefit="sub-1">[TEXTO_CHATGPT]</li>
+        <li data-benefit="sub-2">[TEXTO_CHATGPT]</li>
+        <li data-benefit="sub-3">[TEXTO_CHATGPT]</li>
+      </ul>
+      <a href="#" class="btn btn-secondary" id="btn-suscribir">[TEXTO_CHATGPT]</a>
+    </section>
+
+    <!-- CRÉDITOS -->
+    <section id="creditos">
+      <h2 data-copy="cred_titulo">[TEXTO_CHATGPT]</h2>
+      <ul class="benefits">
+        <li data-benefit="cred-1">[TEXTO_CHATGPT]</li>
+        <li data-benefit="cred-2">[TEXTO_CHATGPT]</li>
+        <li data-benefit="cred-3">[TEXTO_CHATGPT]</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2 data-copy="faq_titulo">[TEXTO_CHATGPT]</h2>
+      <details><summary>[TEXTO_CHATGPT]</summary><p>[TEXTO_CHATGPT]</p></details>
+      <details><summary>[TEXTO_CHATGPT]</summary><p>[TEXTO_CHATGPT]</p></details>
+    </section>
+
+  </main>
+
+  <footer>
+    <small data-copy="footer">[TEXTO_CHATGPT]</small>
+  </footer>
+
+  <script src="js/web.js" defer></script>
+</body>
+  </html>
