@@ -1,25 +1,28 @@
+
 /* AI Bridge Lite - Web: pago dinámico + descarga APK */
 (function () {
   "use strict";
 
   const MIN = 0;
   const MAX = 100;
-  const PAY_URL = "https://TU-PASARELA-DE-PAGO.com/checkout"; // reemplaza
-  const APK_URL = "downloads/ai-bridge-lite.apk";              // reemplaza
+  const APK_URL = "downloads/ai-bridge-lite.apk";
 
   const MSG = {
-  gratis: "¡Perfecto! Puedes comenzar con una contribución de $0. Descarga AI Bridge Lite y descubre todo lo que puedes crear.",
-  pago: "¡Gracias por apoyar AI Bridge Lite! Tu contribución nos ayuda a mantener el proyecto, mejorar sus herramientas y desarrollar nuevas funciones."
-};
+    gratis: "¡Perfecto! Puedes comenzar con una contribución de $0. Descarga AI Bridge Lite y descubre todo lo que puedes crear.",
+    pago: "Las aportaciones estarán disponibles próximamente. Mientras tanto, puedes descargar AI Bridge Lite gratis."
+  };
 
   const $ = (id) => document.getElementById(id);
   const input = $("pay-amount");
   const slider = $("pay-slider");
   const msg = $("pay-msg");
   const btn = $("btn-apk");
+  const btnLabel = $("btn-apk-label");
   const chips = document.querySelectorAll(".chip[data-amount]");
 
   if (!input || !slider || !btn) return;
+
+  const labelGratis = btnLabel ? btnLabel.textContent : "";
 
   function clamp(v) {
     const n = parseFloat(v);
@@ -29,6 +32,7 @@
 
   function actualizar(valor, origen) {
     const n = clamp(valor);
+
     if (origen !== "input") input.value = n;
     if (origen !== "slider") slider.value = n;
 
@@ -42,15 +46,33 @@
     if (n === 0) {
       btn.href = APK_URL;
       btn.setAttribute("download", "");
+
+      if (btnLabel) btnLabel.textContent = labelGratis;
+      btn.removeAttribute("aria-disabled");
     } else {
-      btn.href = PAY_URL + "?amount=" + encodeURIComponent(n) + "&currency=USD";
+      btn.href = "#descarga";
       btn.removeAttribute("download");
+      btn.setAttribute("aria-disabled", "true");
+
+      if (btnLabel) {
+        btnLabel.textContent = "Aportaciones próximamente";
+      }
     }
   }
 
+  btn.addEventListener("click", (event) => {
+    if (clamp(input.value) > 0) {
+      event.preventDefault();
+    }
+  });
+
   input.addEventListener("input", () => actualizar(input.value, "input"));
   input.addEventListener("blur", () => actualizar(input.value));
-  slider.addEventListener("input", () => actualizar(slider.value, "slider"));
+
+  slider.addEventListener("input", () =>
+    actualizar(slider.value, "slider")
+  );
+
   chips.forEach((c) =>
     c.addEventListener("click", () => actualizar(c.dataset.amount))
   );
