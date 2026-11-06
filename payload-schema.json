@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIBridgeLitePayload",
+  "type": "object",
+  "required": [
+    "version",
+    "proveedor",
+    "perfil_seleccionado",
+    "prompt_intencion",
+    "api_key_usuario"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "proveedor": {
+      "type": "string",
+      "enum": ["gemini", "claude", "openai"]
+    },
+    "perfil_seleccionado": {
+      "type": "string",
+      "enum": ["visual", "script", "hibrido", "optimizacion"]
+    },
+    "prompt_intencion": {
+      "type": "string",
+      "maxLength": 1000
+    },
+    "script_snippet": {
+      "type": "string",
+      "maxLength": 6000,
+      "description": "Solo el código relevante extraído, no el script completo."
+    },
+    "objeto_properties": {
+      "type": "object",
+      "description": "Propiedades clave del objeto seleccionado (nombre, clase, posición, tamaño, etc.).",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "array", "object", "null"]
+      }
+    },
+    "modo_secuencia_frames": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["indice", "t_ms", "mime", "data_b64"],
+        "additionalProperties": false,
+        "properties": {
+          "indice": { "type": "integer", "minimum": 0 },
+          "t_ms": { "type": "integer", "minimum": 0 },
+          "mime": { "type": "string", "enum": ["image/webp", "image/jpeg"] },
+          "data_b64": { "type": "string" }
+        }
+      }
+    },
+    "api_key_usuario": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Se envía directo al proveedor. Nunca se guarda en servidores propios."
+    }
+  },
+  "examples": [
+    {
+      "version": "1.0",
+      "proveedor": "gemini",
+      "perfil_seleccionado": "hibrido",
+      "prompt_intencion": "Haz que la animación de la patada se vea más fluida.",
+      "script_snippet": "local anim = humanoid:LoadAnimation(kick)\nanim:Play()",
+      "objeto_properties": {
+        "nombre": "Jugador1",
+        "clase": "Model",
+        "posicion": [0, 5, 0]
+      },
+      "modo_secuencia_frames": [
+        { "indice": 0, "t_ms": 0, "mime": "image/webp", "data_b64": "..." },
+        { "indice": 1, "t_ms": 150, "mime": "image/webp", "data_b64": "..." },
+        { "indice": 2, "t_ms": 300, "mime": "image/webp", "data_b64": "..." }
+      ],
+      "api_key_usuario": "TU_API_KEY"
+    }
+  ]
+}
