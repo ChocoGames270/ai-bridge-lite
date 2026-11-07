@@ -55,7 +55,6 @@ body {
   transition: all var(--transition-fast);
 }
 
-/* Esquina cortada tecnológica */
 .card::after {
   content: '';
   position: absolute;
@@ -74,15 +73,15 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- MASCOTA PIXELADA / DROIDE ASISTENTE (CSS Pure Glitch) --- */
-.cyber-pet {
-  display: inline-block;
+/* --- 1. MASCOTA FLOTANTE (Esquina de la pantalla) --- */
+.cyber-pet-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   width: 32px;
   height: 32px;
   background-color: var(--accent-color);
-  margin-right: 10px;
-  vertical-align: middle;
-  /* Dibuja un rostro cibernético estilo retro-pixel mediante box-shadow */
+  z-index: 999;
   box-shadow: 
     0 -8px 0 0 var(--accent-color),
     -8px 0 0 0 var(--accent-color),
@@ -98,9 +97,27 @@ body {
     filter: drop-shadow(0 0 4px var(--accent-color));
   }
   100% {
-    transform: translateY(-5px);
-    filter: drop-shadow(0 0 10px var(--accent-secondary));
+    transform: translateY(-6px);
+    filter: drop-shadow(0 0 12px var(--accent-secondary));
   }
+}
+
+/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (Sección de Bienvenida) --- */
+.cyber-pet-static {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-color);
+  margin-right: 12px;
+  vertical-align: middle;
+  /* Muestra una variante de color alegre combinando cian y fucsia brillante con brillo estático */
+  box-shadow: 
+    0 -8px 0 0 var(--accent-secondary),
+    -8px 0 0 0 var(--accent-color),
+    8px 0 0 0 var(--accent-color),
+    -8px 8px 0 0 var(--accent-color),
+    8px 8px 0 0 var(--accent-secondary);
+  filter: drop-shadow(0 0 8px var(--accent-color));
 }
 
 /* --- TEXTOS Y NAVEGACIÓN --- */
