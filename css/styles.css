@@ -4,8 +4,8 @@
   --accent-color: #00ffcc;        /* Cian neón principal */
   --accent-secondary: #ff007f;    /* Fucsia de contraste */
   --accent-glow: rgba(0, 255, 204, 0.4);
-  --text-main: #e0fbfc;           /* Blanco tecnológico con subtono cian (¡Adiós al blanco plano!) */
-  --text-muted: #8ca3af;          /* Gris tecnológico legible */
+  --text-main: #e0fbfc;           /* Blanco cian tecnológico */
+  --text-muted: #8ca3af;
   --border-color: #00ffcc44;
   --radius-sm: 2px;
   --radius-md: 4px;
@@ -42,7 +42,7 @@ body {
   padding: 1.5rem;
 }
 
-/* Tarjetas HUD Cyberpunk */
+/* --- TARJETAS HUD CYBERPUNK --- */
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -74,7 +74,36 @@ body {
   transform: translateY(-2px);
 }
 
-/* Títulos con brillo sutil estilo holograma */
+/* --- MASCOTA PIXELADA / DROIDE ASISTENTE (CSS Pure Glitch) --- */
+.cyber-pet {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: var(--accent-color);
+  margin-right: 10px;
+  vertical-align: middle;
+  /* Dibuja un rostro cibernético estilo retro-pixel mediante box-shadow */
+  box-shadow: 
+    0 -8px 0 0 var(--accent-color),
+    -8px 0 0 0 var(--accent-color),
+    8px 0 0 0 var(--accent-color),
+    -8px 8px 0 0 var(--accent-secondary),
+    8px 8px 0 0 var(--accent-secondary);
+  animation: petFloat 2s infinite ease-in-out alternate;
+}
+
+@keyframes petFloat {
+  0% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 4px var(--accent-color));
+  }
+  100% {
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 10px var(--accent-secondary));
+  }
+}
+
+/* --- TEXTOS Y NAVEGACIÓN --- */
 h1, h2, h3, h4 {
   color: var(--text-main);
   letter-spacing: 1px;
@@ -98,7 +127,7 @@ a:hover {
   text-shadow: 0 0 8px var(--accent-secondary);
 }
 
-/* Botones de acción principales */
+/* --- BOTONES DE ACCIÓN --- */
 .btn-primary {
   display: inline-block;
   background-color: rgba(0, 255, 204, 0.08);
@@ -126,7 +155,7 @@ a:hover {
   transform: scale(1.02);
 }
 
-/* Controles de aporte y inputs */
+/* --- CONTROLES Y DONACIONES --- */
 input[type="text"], input[type="number"] {
   background-color: #03050b;
   border: 1px solid var(--border-color);
@@ -160,4 +189,26 @@ button:not(.btn-primary):hover {
   color: var(--bg-primary);
   border-color: var(--accent-color);
   box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* --- ÍCONO APK / APP BADGE --- */
+.app-icon {
+  width: 64px;
+  height: 64px;
+  background: #020205;
+  border: 2px solid var(--accent-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px var(--accent-glow);
+  margin: 1rem 0;
+}
+
+.app-icon::before {
+  content: "AI";
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
 }
