@@ -73,51 +73,52 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- 1. MASCOTA FLOTANTE (Esquina de la pantalla) --- */
+/* --- 1. MASCOTA FLOTANTE (Con carita y patitas separadas) --- */
 .cyber-pet-float {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
+  bottom: 25px;
+  right: 25px;
+  width: 24px;
+  height: 24px;
   background-color: var(--accent-color);
   z-index: 999;
+  /* Dibuja ojos oscuros, antena superior y patitas separadas flotando abajo */
   box-shadow: 
-    0 -8px 0 0 var(--accent-color),
-    -8px 0 0 0 var(--accent-color),
-    8px 0 0 0 var(--accent-color),
-    -8px 8px 0 0 var(--accent-secondary),
-    8px 8px 0 0 var(--accent-secondary);
+    -4px -4px 0 0 var(--bg-primary),
+    4px -4px 0 0 var(--bg-primary),
+    0 -8px 0 0 var(--accent-secondary),
+    -8px 12px 0 0 var(--accent-secondary),
+    8px 12px 0 0 var(--accent-secondary);
   animation: petFloat 2s infinite ease-in-out alternate;
 }
 
 @keyframes petFloat {
   0% {
-    transform: translateY(0px);
-    filter: drop-shadow(0 0 4px var(--accent-color));
+    transform: translateY(0px) rotate(0deg);
+    filter: drop-shadow(0 0 6px var(--accent-color));
   }
   100% {
-    transform: translateY(-6px);
-    filter: drop-shadow(0 0 12px var(--accent-secondary));
+    transform: translateY(-8px) rotate(2deg);
+    filter: drop-shadow(0 0 14px var(--accent-secondary));
   }
 }
 
-/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (Sección de Bienvenida) --- */
+/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (En el título de bienvenida) --- */
 .cyber-pet-static {
   display: inline-block;
-  width: 32px;
-  height: 32px;
-  background-color: var(--accent-color);
-  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--accent-secondary);
+  margin-right: 14px;
   vertical-align: middle;
-  /* Muestra una variante de color alegre combinando cian y fucsia brillante con brillo estático */
+  /* Carita de píxeles y patitas separadas a los costados */
   box-shadow: 
-    0 -8px 0 0 var(--accent-secondary),
-    -8px 0 0 0 var(--accent-color),
-    8px 0 0 0 var(--accent-color),
-    -8px 8px 0 0 var(--accent-color),
-    8px 8px 0 0 var(--accent-secondary);
-  filter: drop-shadow(0 0 8px var(--accent-color));
+    -4px -4px 0 0 var(--bg-primary),
+    4px -4px 0 0 var(--bg-primary),
+    0 -8px 0 0 var(--accent-color),
+    -10px 10px 0 0 var(--accent-color),
+    10px 10px 0 0 var(--accent-color);
+  filter: drop-shadow(0 0 8px var(--accent-secondary));
 }
 
 /* --- TEXTOS Y NAVEGACIÓN --- */
