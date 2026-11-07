@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- Ruta corregida apuntando a la carpeta css -->
+  <link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
 
@@ -46,16 +47,15 @@
         <button id="btn-enviar-ai" class="btn-primary" style="margin-top: 10px; padding: 10px 20px;">Enviar a la IA</button>
       </div>
       
-      <div class="chat-response" style="margin-top: 15px; background: #f4f4f4; padding: 12px; border-radius: 8px; min-height: 50px; color: #333;">
+      <div class="chat-response" style="margin-top: 15px; background: #05060a; padding: 12px; border-radius: 8px; min-height: 50px;">
         <strong>Respuesta:</strong>
         <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
       </div>
     </section>
   </main>
 
-    <!-- Carga de Scripts con versión forzada para evitar caché -->
-  <script src="onboarding.js?v=2"></script>
-  <script src="web.js?v=2"></script>
-
+  <!-- Carga de Scripts apuntando a la carpeta js con control de versión -->
+  <script src="js/onboarding.js?v=2"></script>
+  <script src="js/web.js?v=2"></script>
 </body>
 </html>
