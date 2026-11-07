@@ -3,19 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="AI Bridge Lite: puente de contexto e IA flotante para desarrollo móvil.">
+  <meta name="description" content="AI Bridge Lite: un proyecto para conectar entornos de desarrollo con asistentes de inteligencia artificial.">
   <title>AI Bridge Lite</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- MASCOTA FLOTANTE (Patrullando la esquina inferior derecha) -->
-  <div class="cyber-pet-float"></div>
+  <!-- MASCOTA FLOTANTE (Droide en la esquina inferior derecha) -->
+  <div class="cyber-pet-float">
+    <svg viewBox="0 0 24 24" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Antena superior -->
+      <rect x="11" y="1" width="2" height="3" fill="#ff007f"/>
+      <rect x="10" y="0" width="4" height="1" fill="#ff007f"/>
+      <!-- Cabeza / Cuerpo principal -->
+      <rect x="4" y="4" width="16" height="12" fill="#00ffcc" rx="1"/>
+      <!-- Orejas mecánicas -->
+      <rect x="2" y="7" width="2" height="6" fill="#ff007f"/>
+      <rect x="20" y="7" width="2" height="6" fill="#ff007f"/>
+      <!-- Visor / Carita oscura -->
+      <rect x="6" y="6" width="12" height="8" fill="#020205"/>
+      <!-- Ojos de píxel brillante -->
+      <rect x="8" y="8" width="2" height="3" fill="#00ffcc"/>
+      <rect x="14" y="8" width="2" height="3" fill="#00ffcc"/>
+      <!-- Patitas mecánicas despegadas abajo -->
+      <rect x="6" y="18" width="3" height="4" fill="#ff007f"/>
+      <rect x="15" y="18" width="3" height="4" fill="#ff007f"/>
+      <rect x="5" y="21" width="2" height="2" fill="#00ffcc"/>
+      <rect x="17" y="21" width="2" height="2" fill="#00ffcc"/>
+    </svg>
+  </div>
 
   <!-- HERO -->
   <header id="hero">
     <!-- Mascota estática y alegre en la bienvenida -->
-    <h1><span class="cyber-pet-static"></span><span data-copy="hero_titulo">One bridge. Every AI. Your creativity.</span></h1>
+    <h1>
+      <span class="cyber-pet-static">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Antena superior -->
+          <rect x="11" y="1" width="2" height="3" fill="#00ffcc"/>
+          <rect x="10" y="0" width="4" height="1" fill="#00ffcc"/>
+          <!-- Cabeza / Cuerpo principal -->
+          <rect x="4" y="4" width="16" height="12" fill="#ff007f" rx="1"/>
+          <!-- Orejas mecánicas -->
+          <rect x="2" y="7" width="2" height="6" fill="#00ffcc"/>
+          <rect x="20" y="7" width="2" height="6" fill="#00ffcc"/>
+          <!-- Visor / Carita oscura -->
+          <rect x="6" y="6" width="12" height="8" fill="#020205"/>
+          <!-- Ojos felices guiñando / brillando -->
+          <rect x="8" y="8" width="3" height="2" fill="#ff007f"/>
+          <rect x="13" y="8" width="3" height="2" fill="#ff007f"/>
+          <rect x="9" y="11" width="6" height="1" fill="#00ffcc"/>
+          <!-- Patitas mecánicas despegadas a los lados -->
+          <rect x="5" y="18" width="3" height="4" fill="#00ffcc"/>
+          <rect x="16" y="18" width="3" height="4" fill="#00ffcc"/>
+          <rect x="4" y="21" width="2" height="2" fill="#ff007f"/>
+          <rect x="18" y="21" width="2" height="2" fill="#ff007f"/>
+        </svg>
+      </span>
+      <span data-copy="hero_titulo">One bridge. Every AI. Your creativity.</span>
+    </h1>
     <p data-copy="hero_subtitulo">Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.</p>
     <a href="#descarga" class="btn btn-primary" id="btn-ir-descarga">Conoce AI Bridge Lite</a>
   </header>
@@ -28,24 +74,24 @@
       <ul class="cards">
         <li class="card" data-feature="captura">
           <h3>Contexto visual</h3>
-          <p>Comparte capturas de pantalla para explicar mejor lo que estás creando.</p>
+          <p>Podrás compartir capturas de pantalla para explicar mejor lo que estás creando.</p>
         </li>
         <li class="card" data-feature="codigo">
           <h3>Código con contexto</h3>
-          <p>Comparte fragmentos de código y recibe ayuda para comprenderlos, revisarlos y mejorarlos.</p>
+          <p>Podrás compartir fragmentos de código y recibir ayuda para comprenderlos, revisarlos y mejorarlos.</p>
         </li>
         <li class="card" data-feature="secuencia">
           <h3>Referencias en secuencia</h3>
-          <p>Presenta varias imágenes ordenadas para explicar movimientos, animaciones y procesos visuales.</p>
+          <p>Podrás presentar varias imágenes ordenadas para explicar movimientos, animaciones y procesos visuales.</p>
         </li>
         <li class="card" data-feature="perfiles">
           <h3>Diferentes formas de crear</h3>
-          <p>Organiza la asistencia según tus necesidades: programación, diseño visual, 3D y optimización.</p>
+          <p>La propuesta contempla organizar la asistencia según tus necesidades: programación, diseño visual, 3D y optimización.</p>
         </li>
       </ul>
     </section>
 
-    <!-- DESCARGA + PAGO DINÁMICO -->
+    <!-- ACCESO A LA APLICACIÓN: DISPONIBLE PRÓXIMAMENTE -->
     <section id="descarga">
       <h2 data-copy="pago_titulo">Acceso libre, apoyo voluntario</h2>
 
@@ -73,10 +119,9 @@
         <p id="pay-msg" role="status" aria-live="polite"></p>
       </div>
 
-      <!-- Descarga directa APK: reemplaza href por la URL real -->
       <a id="btn-apk" class="btn btn-primary btn-block"
-         href="downloads/ai-bridge-lite.apk" download
-         data-apk-version="0.1.0">
+         href="#descarga"
+         aria-disabled="true">
         <span id="btn-apk-label">Aplicación próximamente</span>
       </a>
       <small id="apk-info" data-copy="apk_info">La versión Android todavía está en desarrollo. La descarga se habilitará cuando exista una versión disponible.</small>
@@ -87,7 +132,7 @@
       <h2 data-copy="sub_titulo">Planes para cada proyecto</h2>
       <ul class="benefits">
         <li data-benefit="sub-1">Opciones accesibles para distintos niveles de uso.</li>
-        <li data-benefit="sub-2">Beneficios y límites explicados con transparencia, sin compromisos ocultos.</li>
+        <li data-benefit="sub-2">Beneficios y límites explicados con transparencia.</li>
         <li data-benefit="sub-3">Cancela fácilmente, sin compromisos ocultos.</li>
       </ul>
       <a href="#" class="btn btn-secondary" id="btn-suscribir">Planes próximamente</a>
