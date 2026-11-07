@@ -1,219 +1,176 @@
-:root {
-  --bg-primary: #020205;
-  --bg-card: #080b14;
-  --accent-color: #00ffcc;        /* Cian neón principal */
-  --accent-secondary: #ff007f;    /* Fucsia de contraste */
-  --accent-glow: rgba(0, 255, 204, 0.4);
-  --text-main: #e0fbfc;           /* Blanco cian tecnológico */
-  --text-muted: #8ca3af;
-  --border-color: #00ffcc44;
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --transition-fast: 0.15s ease-in-out;
-}
+/* ==========================================
+   AI BRIDGE LITE - CYBERPUNK THEME (CSS)
+   ========================================== */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg-core: #0a0b10;
+  --panel-bg: #121520;
+  --neon-cyan: #00f0ff;
+  --neon-pink: #ff0055;
+  --neon-green: #00ff66;
+  --text-main: #e0e6ed;
+  --text-muted: #8892b0;
+  --border-color: #1f293d;
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace, system-ui;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-core);
   color: var(--text-main);
-  line-height: 1.6;
-  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  
-  /* FONDO CYBERPUNK / VIDEOJUEGO: Cuadrícula digital + líneas CRT */
-  background-image: 
-    linear-gradient(rgba(0, 255, 204, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 204, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
-  background-size: 40px 40px, 40px 40px, 100% 4px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem;
-}
-
-/* --- TARJETAS HUD CYBERPUNK --- */
-.card {
-  background-color: var(--bg-card);
+  max-width: 480px;
+  background: var(--panel-bg);
   border: 1px solid var(--border-color);
-  border-left: 3px solid var(--accent-color);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin-bottom: 1.2rem;
-  box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.02), 0 4px 20px rgba(0, 0, 0, 0.9);
-  position: relative;
-  transition: all var(--transition-fast);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+  box-sizing: border-box;
+  margin: 10px;
 }
 
-.card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-style: solid;
-  border-width: 0 12px 12px 0;
-  border-color: transparent var(--accent-color) transparent transparent;
-  opacity: 0.8;
-}
-
-.card:hover {
-  border-color: var(--accent-color);
-  border-left-color: var(--accent-secondary);
-  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 10px rgba(0, 255, 204, 0.08);
-  transform: translateY(-2px);
-}
-
-/* --- 1. MASCOTA FLOTANTE (Esquina inferior derecha) --- */
-.cyber-pet-float {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 999;
-  animation: petFloat 2s infinite ease-in-out alternate;
-  filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.6));
-}
-
-.cyber-pet-float svg {
-  display: block;
-}
-
-@keyframes petFloat {
-  0% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-8px) rotate(3deg);
-  }
-}
-
-/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (Sección de bienvenida) --- */
-.cyber-pet-static {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 12px;
-  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));
-}
-
-.cyber-pet-static svg {
-  display: block;
-}
-
-/* --- TEXTOS Y NAVEGACIÓN --- */
-h1, h2, h3, h4 {
-  color: var(--text-main);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-  text-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
-}
-
-p, span, label {
-  color: var(--text-main);
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
-  color: var(--accent-secondary);
-  text-shadow: 0 0 8px var(--accent-secondary);
-}
-
-/* --- BOTONES DE ACCIÓN --- */
-.btn-primary {
-  display: inline-block;
-  background-color: rgba(0, 255, 204, 0.08);
-  color: var(--accent-color);
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: 800;
+header h1 {
+  color: var(--neon-cyan);
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  padding: 0.85rem 1.75rem;
-  margin: 1.2rem 0;
-  border: 2px solid var(--accent-color);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 0 12px var(--accent-glow);
-  text-shadow: 0 0 6px var(--accent-glow);
-  transition: all var(--transition-fast);
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  box-shadow: 0 0 30px var(--accent-color);
-  text-shadow: none;
-  transform: scale(1.02);
+header p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0;
 }
 
-/* --- CONTROLES Y DONACIONES --- */
-input[type="text"], input[type="number"] {
-  background-color: #03050b;
+/* Secciones / Panel de Control y Consola */
+section {
+  background: rgba(18, 21, 32, 0.7);
   border: 1px solid var(--border-color);
-  color: var(--accent-color);
-  padding: 0.5rem;
-  font-family: 'Courier New', Courier, monospace;
-  border-radius: var(--radius-sm);
-  outline: none;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  border-left: 3px solid var(--neon-pink);
+  padding-left: 8px;
+  margin-top: 0;
+}
+
+/* Controles de Pago y Sliders */
+.controles-pago {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 15px 0;
+}
+
+input[type="number"] {
+  background: #05060a;
+  border: 1px solid var(--border-color);
+  color: var(--neon-cyan);
+  padding: 8px;
+  border-radius: 6px;
+  width: 70px;
+  text-align: center;
+  font-weight: bold;
 }
 
 input[type="range"] {
-  accent-color: var(--accent-color);
-  background: #03050b;
-  cursor: pointer;
+  flex-grow: 1;
+  accent-color: var(--neon-cyan);
 }
 
-button:not(.btn-primary) {
-  background-color: #080b14;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  padding: 0.4rem 0.8rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-button:not(.btn-primary):hover {
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  border-color: var(--accent-color);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-
-/* --- ÍCONO APK / APP BADGE --- */
-.app-icon {
-  width: 64px;
-  height: 64px;
-  background: #020205;
-  border: 2px solid var(--accent-color);
-  border-radius: 12px;
+.chips-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px var(--accent-glow);
-  margin: 1rem 0;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
-.app-icon::before {
-  content: "AI";
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  text-shadow: 0 0 10px var(--accent-color);
+.chip {
+  background: #05060a;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.chip.active {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+}
+
+/* Botones y Enlaces de Acción */
+.btn-disabled, .btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.btn-disabled {
+  background: #1a1f30;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-color);
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--neon-cyan), #0077ff);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+}
+
+/* Área de Consola de Chat / IA */
+textarea {
+  background: #05060a;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  resize: none;
+  font-family: inherit;
+}
+
+textarea:focus {
+  border-color: var(--neon-cyan);
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 240, 255, 0.2);
+}
+
+.chat-response {
+  background: #05060a !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main) !important;
+}
+
+.chat-response strong {
+  color: var(--neon-green);
 }
