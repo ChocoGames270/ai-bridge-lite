@@ -73,52 +73,39 @@ body {
   transform: translateY(-2px);
 }
 
-/* --- 1. MASCOTA FLOTANTE (Con carita y patitas separadas) --- */
+/* --- 1. MASCOTA FLOTANTE (Esquina inferior derecha) --- */
 .cyber-pet-float {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 24px;
-  height: 24px;
-  background-color: var(--accent-color);
   z-index: 999;
-  /* Dibuja ojos oscuros, antena superior y patitas separadas flotando abajo */
-  box-shadow: 
-    -4px -4px 0 0 var(--bg-primary),
-    4px -4px 0 0 var(--bg-primary),
-    0 -8px 0 0 var(--accent-secondary),
-    -8px 12px 0 0 var(--accent-secondary),
-    8px 12px 0 0 var(--accent-secondary);
   animation: petFloat 2s infinite ease-in-out alternate;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.6));
+}
+
+.cyber-pet-float svg {
+  display: block;
 }
 
 @keyframes petFloat {
   0% {
     transform: translateY(0px) rotate(0deg);
-    filter: drop-shadow(0 0 6px var(--accent-color));
   }
   100% {
-    transform: translateY(-8px) rotate(2deg);
-    filter: drop-shadow(0 0 14px var(--accent-secondary));
+    transform: translateY(-8px) rotate(3deg);
   }
 }
 
-/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (En el título de bienvenida) --- */
+/* --- 2. MASCOTA ESTÁTICA Y ALEGRE (Sección de bienvenida) --- */
 .cyber-pet-static {
   display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-color: var(--accent-secondary);
-  margin-right: 14px;
   vertical-align: middle;
-  /* Carita de píxeles y patitas separadas a los costados */
-  box-shadow: 
-    -4px -4px 0 0 var(--bg-primary),
-    4px -4px 0 0 var(--bg-primary),
-    0 -8px 0 0 var(--accent-color),
-    -10px 10px 0 0 var(--accent-color),
-    10px 10px 0 0 var(--accent-color);
-  filter: drop-shadow(0 0 8px var(--accent-secondary));
+  margin-right: 12px;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));
+}
+
+.cyber-pet-static svg {
+  display: block;
 }
 
 /* --- TEXTOS Y NAVEGACIÓN --- */
