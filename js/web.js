@@ -64,17 +64,19 @@
       }
     }
 
-    btn.addEventListener("click", (event) => {
+        btn.addEventListener("click", (event) => {
       const monto = parseFloat(btn.dataset.amount || "0");
+      
       if (monto === 0) {
-        // Comprobar si el usuario tiene su API Key antes de enviarlo a la consola
-        if (window.AIBridgeOnboarding && !window.AIBridgeOnboarding.tieneApiKey()) {
-          alert("Recuerda que en la opción gratuita ($0) necesitas ingresar tu API Key en la consola para realizar peticiones.");
-        }
+        // En modo $0, descarga libre de la APK (la API Key solo se usa aparte en la consola)
+        console.log("[AI Bridge]: Descarga de APK libre en modo gratuito.");
       } else {
+        // Si es mayor a 0, las aportaciones están próximas
         event.preventDefault();
+        alert("Las aportaciones de pago estarán disponibles próximamente.");
       }
     });
+
 
     input.addEventListener("input", () => actualizarFlujo(input.value, "input"));
     input.addEventListener("blur", () => actualizarFlujo(input.value));
