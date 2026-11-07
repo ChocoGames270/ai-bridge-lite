@@ -1,6 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AIBridgeLitePayload",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AIBridgePayload",
   "type": "object",
   "required": [
     "version",
@@ -9,11 +9,10 @@
     "prompt_intencion",
     "api_key_usuario"
   ],
-  "additionalProperties": false,
   "properties": {
     "version": {
       "type": "string",
-      "const": "1.0"
+      "enum": ["1.0"]
     },
     "proveedor": {
       "type": "string",
@@ -21,64 +20,35 @@
     },
     "perfil_seleccionado": {
       "type": "string",
-      "enum": ["visual", "script", "hibrido", "optimizacion"]
+      "description": "Área o rol de desarrollo activo (scripts, 3d, vfx, aprendiz)"
     },
     "prompt_intencion": {
       "type": "string",
-      "maxLength": 1000
-    },
-    "script_snippet": {
-      "type": "string",
-      "maxLength": 6000,
-      "description": "Solo el código relevante extraído, no el script completo."
-    },
-    "objeto_properties": {
-      "type": "object",
-      "description": "Propiedades clave del objeto seleccionado (nombre, clase, posición, tamaño, etc.).",
-      "additionalProperties": {
-        "type": ["string", "number", "boolean", "array", "object", "null"]
-      }
-    },
-    "modo_secuencia_frames": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 5,
-      "items": {
-        "type": "object",
-        "required": ["indice", "t_ms", "mime", "data_b64"],
-        "additionalProperties": false,
-        "properties": {
-          "indice": { "type": "integer", "minimum": 0 },
-          "t_ms": { "type": "integer", "minimum": 0 },
-          "mime": { "type": "string", "enum": ["image/webp", "image/jpeg"] },
-          "data_b64": { "type": "string" }
-        }
-      }
+      "maxLength": 1000,
+      "description": "Intención o consulta principal del usuario"
     },
     "api_key_usuario": {
       "type": "string",
       "minLength": 10,
-      "description": "Se envía directo al proveedor. Nunca se guarda en servidores propios."
+      "description": "Clave API provista por el usuario para la sesión actual (no persistida en backend)"
+    },
+    "script_snippet": {
+      "type": "string",
+      "maxLength": 6000,
+      "description": "Fragmento de código opcional para contextualizar la IA"
+    },
+    "objeto_properties": {
+      "type": "object",
+      "description": "Propiedades o metadatos de objetos técnicos opcionales"
+    },
+    "modo_secuencia_frames": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "string"
+      },
+      "description": "Secuencia opcional de estados o frames visuales"
     }
   },
-  "examples": [
-    {
-      "version": "1.0",
-      "proveedor": "gemini",
-      "perfil_seleccionado": "hibrido",
-      "prompt_intencion": "Haz que la animación de la patada se vea más fluida.",
-      "script_snippet": "local anim = humanoid:LoadAnimation(kick)\nanim:Play()",
-      "objeto_properties": {
-        "nombre": "Jugador1",
-        "clase": "Model",
-        "posicion": [0, 5, 0]
-      },
-      "modo_secuencia_frames": [
-        { "indice": 0, "t_ms": 0, "mime": "image/webp", "data_b64": "..." },
-        { "indice": 1, "t_ms": 150, "mime": "image/webp", "data_b64": "..." },
-        { "indice": 2, "t_ms": 300, "mime": "image/webp", "data_b64": "..." }
-      ],
-      "api_key_usuario": "TU_API_KEY"
-    }
-  ]
+  "additionalProperties": false
 }
