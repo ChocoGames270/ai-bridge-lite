@@ -1,15 +1,13 @@
-
-/* AI Bridge Lite - Web: pago dinámico + descarga APK */
+/* AI Bridge Lite - Web: aportaciones + estado de disponibilidad */
 (function () {
   "use strict";
 
   const MIN = 0;
   const MAX = 100;
-  const APK_URL = "downloads/ai-bridge-lite.apk";
 
   const MSG = {
-    gratis: "¡Perfecto! Puedes comenzar con una contribución de $0. Descarga AI Bridge Lite y descubre todo lo que puedes crear.",
-    pago: "Las aportaciones estarán disponibles próximamente. Mientras tanto, puedes descargar AI Bridge Lite gratis."
+    gratis: "El acceso gratuito está previsto. La versión Android todavía está en desarrollo y la descarga se habilitará cuando esté disponible.",
+    pago: "Las aportaciones estarán disponibles próximamente, cuando se habilite el sistema de pagos."
   };
 
   const $ = (id) => document.getElementById(id);
@@ -22,7 +20,7 @@
 
   if (!input || !slider || !btn) return;
 
-  const labelGratis = btnLabel ? btnLabel.textContent : "";
+  const labelGratis = "Aplicación próximamente";
 
   function clamp(v) {
     const n = parseFloat(v);
@@ -43,38 +41,39 @@
     msg.textContent = n === 0 ? MSG.gratis : MSG.pago;
     btn.dataset.amount = n;
 
-    if (n === 0) {
-      btn.href = APK_URL;
-      btn.setAttribute("download", "");
+    // No hay APK ni pasarela de pago disponibles todavía.
+    btn.href = "#descarga";
+    btn.removeAttribute("download");
+    btn.setAttribute("aria-disabled", "true");
 
-      if (btnLabel) btnLabel.textContent = labelGratis;
-      btn.removeAttribute("aria-disabled");
-    } else {
-      btn.href = "#descarga";
-      btn.removeAttribute("download");
-      btn.setAttribute("aria-disabled", "true");
-
-      if (btnLabel) {
-        btnLabel.textContent = "Aportaciones próximamente";
-      }
+    if (btnLabel) {
+      btnLabel.textContent = n === 0
+        ? labelGratis
+        : "Aportaciones próximamente";
     }
   }
 
+  // Impide cualquier intento de descarga o pago prematuro.
   btn.addEventListener("click", (event) => {
-    if (clamp(input.value) > 0) {
-      event.preventDefault();
-    }
+    event.preventDefault();
   });
 
-  input.addEventListener("input", () => actualizar(input.value, "input"));
-  input.addEventListener("blur", () => actualizar(input.value));
+  input.addEventListener("input", () =>
+    actualizar(input.value, "input")
+  );
+
+  input.addEventListener("blur", () =>
+    actualizar(input.value)
+  );
 
   slider.addEventListener("input", () =>
     actualizar(slider.value, "slider")
   );
 
   chips.forEach((c) =>
-    c.addEventListener("click", () => actualizar(c.dataset.amount))
+    c.addEventListener("click", () =>
+      actualizar(c.dataset.amount)
+    )
   );
 
   actualizar(0);
