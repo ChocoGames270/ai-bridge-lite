@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <!-- Aquí puedes enlazar tu archivo CSS si lo tienes -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,9 +37,23 @@
         </a>
       </div>
     </section>
+
+    <!-- Sección de Consola de IA (Interfaz de Peticiones) -->
+    <section class="panel-chat" style="margin-top: 20px;">
+      <h2>Consola de IA</h2>
+      <div class="chat-inputs">
+        <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4" style="width: 100%; padding: 10px; border-radius: 8px; box-sizing: border-box;"></textarea>
+        <button id="btn-enviar-ai" class="btn-primary" style="margin-top: 10px; padding: 10px 20px;">Enviar a la IA</button>
+      </div>
+      
+      <div class="chat-response" style="margin-top: 15px; background: #f4f4f4; padding: 12px; border-radius: 8px; min-height: 50px; color: #333;">
+        <strong>Respuesta:</strong>
+        <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
+      </div>
+    </section>
   </main>
 
-  <!-- Enlaces a los scripts del sistema (Onboarding + Web unificado con Fetch BYOK) -->
+  <!-- Carga de Scripts -->
   <script src="onboarding.js"></script>
   <script src="web.js"></script>
 </body>
