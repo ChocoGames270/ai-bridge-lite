@@ -1,13 +1,15 @@
 :root {
-  --bg-primary: #0f172a;
-  --bg-card: #1e293b;
-  --accent-color: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.25);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border-color: #334155;
-  --radius-sm: 8px;
-  --radius-md: 12px;
+  --bg-primary: #05050a;          /* Fondo negro profundo / espacial */
+  --bg-card: #0c0f1d;             /* Fondo de tarjetas ligeramente azulado/oscuro */
+  --accent-color: #00ffcc;        /* Cian neón brillante para elementos principales */
+  --accent-secondary: #ff007f;    /* Magenta / Fucsia neón de contraste */
+  --accent-glow: rgba(0, 255, 204, 0.4);  /* Brillo difuminado en cian */
+  --accent-glow-sec: rgba(255, 0, 127, 0.4); /* Brillo difuminado en magenta */
+  --text-main: #f0f6fc;           /* Blanco brillante para textos */
+  --text-muted: #8b949e;          /* Gris tecnológico */
+  --border-color: #1f6feb;        /* Bordes con un toque azul eléctrico */
+  --radius-sm: 4px;               /* Bordes más rectos, estilo terminal/sci-fi */
+  --radius-md: 8px;
   --transition-fast: 0.2s ease-in-out;
 }
 
@@ -26,6 +28,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -44,48 +47,34 @@ body {
 
 .card:hover {
   border-color: var(--accent-color);
-  box-shadow: 0 0 15px var(--accent-glow);
+  box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px var(--accent-glow);
   transform: translateY(-2px);
 }
 
-/* Botones de acción */
+/* Botones de acción mejorados (Estilo terminal/neón) */
 .btn-primary {
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  font-weight: 600;
+  display: inline-block; /* Evita que invadan el texto */
+  background-color: transparent;
+  color: var(--accent-color);
+  font-family: 'Courier New', Courier, monospace; /* Toque tecnológico */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   padding: 0.75rem 1.5rem;
-  border: none;
+  margin: 1rem 0; /* Espacio libre arriba y abajo para que no tapen nada */
+  border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: filter var(--transition-fast), transform var(--transition-fast);
-}
-
-.btn-primary:hover {
-  filter: brightness(1.1);
-  transform: scale(1.02);
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-    }
-/* Botones de acción mejorados para móviles y web */
-.btn-primary {
-  display: inline-block; /* Evita que actúen raro con elementos de texto */
-  background-color: var(--accent-color);
-  color: var(--bg-primary);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  margin: 1rem 0; /* ¡Margen superior e inferior vital para que no tapen el texto! */
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  text-decoration: none; /* Por si usas etiquetas <a> con estilo de botón */
+  text-decoration: none;
   text-align: center;
-  transition: filter var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: all var(--transition-fast);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  box-shadow: 0 0 25px var(--accent-color), 0 0 10px var(--accent-glow);
   transform: scale(1.02);
 }
 
