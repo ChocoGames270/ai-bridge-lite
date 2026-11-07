@@ -68,3 +68,27 @@ body {
 .btn-primary:active {
   transform: scale(0.98);
     }
+/* Botones de acción mejorados para móviles y web */
+.btn-primary {
+  display: inline-block; /* Evita que actúen raro con elementos de texto */
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0; /* ¡Margen superior e inferior vital para que no tapen el texto! */
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none; /* Por si usas etiquetas <a> con estilo de botón */
+  text-align: center;
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
