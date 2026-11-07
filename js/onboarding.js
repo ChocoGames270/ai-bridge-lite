@@ -126,7 +126,7 @@
         console.warn("[AI Bridge Lite Security]: La API Key proporcionada parece incompleta.");
       }
 
-      const activa = cfg.api_keys[proveedor_activo];
+      const activa = cfg.api_keys[cfg.proveedor_activo];
 
       if (!activa) {
         const alt = PROVEEDORES.find(p => cfg.api_keys[p]);
@@ -137,6 +137,44 @@
       }
 
       return save();
+    },
+
+    setProveedorActivo(p) {
+      if (!PROVEEDORES.includes(p)) return false;
+
+      cfg.proveedor_activo = p;
+      return save();
+    },
+
+    next() {
+      if (!validarPaso(paso)) {
+        return {
+          ok: false,
+          error: "paso_invalido"
+        };
+      }
+
+      if (paso < PASOS.length - 1) {
+        paso++;
+
+        return {
+          ok: true,
+          paso: PASOS[paso]
+        };
+      }
+
+      cfg.completado = true;
+      save();
+
+      return {
+        ok: true,
+        fin: true
+      };
+    },
+
+    back() {
+      if (paso > 0) paso--;
+      return PASOS[paso];
     },
 
     reset() {
@@ -154,7 +192,6 @@
       cfg = clone(DEFAULT);
       paso = 0;
     },
-
 
     buildPayload(datos) {
       const key = cfg.api_keys[cfg.proveedor_activo];
