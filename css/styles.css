@@ -1,15 +1,13 @@
 :root {
-  --bg-primary: #020205;          /* Negro absoluto espacial */
-  --bg-card: #080b14;             /* Azul ultra oscuro técnico */
-  --accent-color: #00ffcc;        /* Cian neón brillante */
-  --accent-secondary: #ff007f;    /* Fucsia neón de alerta */
-  --accent-glow: rgba(0, 255, 204, 0.6);
-  --accent-glow-sec: rgba(255, 0, 127, 0.6);
+  --bg-primary: #020205;
+  --bg-card: #080b14;
+  --accent-color: #00ffcc;        /* Cian neón principal */
+  --accent-secondary: #ff007f;    /* Fucsia de contraste */
+  --accent-glow: rgba(0, 255, 204, 0.4);
   --text-main: #e2e8f0;
   --text-muted: #64748b;
-  --border-color: #00ffcc44;      /* Bordes sutiles en cian translúcido */
-  --border-active: #00ffcc;
-  --radius-sm: 2px;               /* Esquinas casi rectas estilo HUD */
+  --border-color: #00ffcc44;
+  --radius-sm: 2px;
   --radius-md: 4px;
   --transition-fast: 0.15s ease-in-out;
 }
@@ -21,15 +19,15 @@
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace, system-ui; /* Tipografía estilo consola */
+  font-family: 'Courier New', Courier, monospace, system-ui;
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Efecto sutil de líneas de escaneo tipo monitor CRT antiguo */
-  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  /* Líneas de escaneo estilo monitor CRT */
+  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
   background-size: 100% 4px;
 }
 
@@ -40,42 +38,66 @@ body {
   padding: 1.5rem;
 }
 
-/* Tarjetas con estilo de paneles de control / HUD */
+/* Tarjetas HUD Cyberpunk inspiradas en la referencia */
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-left: 3px solid var(--accent-color); /* Línea lateral distintiva de terminal */
+  border-left: 3px solid var(--accent-color);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1.2rem;
-  box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.03), 0 4px 20px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 15px rgba(0, 255, 204, 0.02), 0 4px 20px rgba(0, 0, 0, 0.9);
   position: relative;
   transition: all var(--transition-fast);
 }
 
-/* Pequeño detalle visual estilo esquina cortada / tech en la tarjeta */
+/* Esquina cortada tecnológica superior derecha */
 .card::after {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
   border-style: solid;
-  border-width: 0 10px 10px 0;
+  border-width: 0 12px 12px 0;
   border-color: transparent var(--accent-color) transparent transparent;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .card:hover {
   border-color: var(--accent-color);
-  border-left-color: var(--accent-secondary); /* Cambia a fucsia al interactuar */
-  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 10px rgba(0, 255, 204, 0.1);
+  border-left-color: var(--accent-secondary);
+  box-shadow: 0 0 25px var(--accent-glow), inset 0 0 10px rgba(0, 255, 204, 0.08);
   transform: translateY(-2px);
 }
 
-/* Botones de acción con alto impacto Cyberpunk */
+/* Títulos y textos con estética de terminal */
+h1, h2, h3, h4 {
+  color: var(--text-main);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+p, span, label {
+  color: var(--text-main);
+}
+
+/* Enlaces y textos que antes salían en azul estándar */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-secondary);
+  text-shadow: 0 0 8px var(--accent-secondary);
+}
+
+/* Botones de acción principales */
 .btn-primary {
   display: inline-block;
-  background-color: rgba(0, 255, 204, 0.1);
+  background-color: rgba(0, 255, 204, 0.08);
   color: var(--accent-color);
   font-family: 'Courier New', Courier, monospace;
   font-weight: 800;
@@ -86,21 +108,60 @@ body {
   border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  text-decoration: none;
   text-align: center;
-  box-shadow: 0 0 15px var(--accent-glow), inset 0 0 10px rgba(0, 255, 204, 0.2);
-  text-shadow: 0 0 8px var(--accent-glow);
+  box-shadow: 0 0 12px var(--accent-glow);
+  text-shadow: 0 0 6px var(--accent-glow);
   transition: all var(--transition-fast);
 }
 
 .btn-primary:hover {
   background-color: var(--accent-color);
   color: var(--bg-primary);
-  box-shadow: 0 0 35px var(--accent-color), 0 0 15px var(--accent-glow);
+  box-shadow: 0 0 30px var(--accent-color);
   text-shadow: none;
   transform: scale(1.02);
 }
 
-.btn-primary:active {
-  transform: scale(0.98);
+/* --- ESTILIZADO DE CONTROLES DE APORTE (Sliders e Inputs) --- */
+
+input[type="text"], input[type="number"] {
+  background-color: #03050b;
+  border: 1px solid var(--border-color);
+  color: var(--accent-color);
+  padding: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Personalización de la barra deslizadora (Range) */
+input[type="range"] {
+  accent-color: var(--accent-color);
+  background: #03050b;
+  cursor: pointer;
+}
+
+/* Botones de montos ($0, $5, $10, etc.) */
+button:not(.btn-primary) {
+  background-color: #080b14;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+button:not(.btn-primary):hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
