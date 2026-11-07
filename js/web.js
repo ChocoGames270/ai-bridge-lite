@@ -1,6 +1,23 @@
-/* AI Bridge Lite - Web: aportaciones + estado de disponibilidad */
+/* AI Bridge Lite - Web: aportaciones + estado de disponibilidad + integración de onboarding */
 (function () {
   "use strict";
+
+  // 1. Sincronización inicial con el Onboarding
+  if (window.AIBridgeOnboarding) {
+    const onboarding = window.AIBridgeOnboarding;
+    const cfg = onboarding.getConfig();
+
+    console.log("[AI Bridge Lite]: Configuración cargada desde Onboarding.", {
+      proveedor: cfg.proveedor_activo,
+      idioma: cfg.idioma,
+      areas: cfg.areas,
+      tieneKey: onboarding.tieneApiKey()
+    });
+
+    if (!onboarding.isDone()) {
+      console.warn("[AI Bridge Lite]: El onboarding está pendiente de completarse.");
+    }
+  }
 
   const MIN = 0;
   const MAX = 100;
