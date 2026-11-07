@@ -4,19 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <!-- Ruta corregida apuntando a la carpeta css -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <!-- Enlace al diseño Cyberpunk corregido -->
+  <link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
 
   <main class="container">
-    <header>
-      <h1>AI Bridge Lite</h1>
-      <p>Centro de desarrollo y puente de IA (Modo Preventivo)</p>
+    <header style="position: relative;">
+      <!-- Mascota / Icono de Robot decorativo superior -->
+      <div class="bot-mascot" style="font-size: 1.5rem; margin-bottom: 5px;">🤖</div>
+      
+      <h1>ONE BRIDGE.<br>EVERY AI. YOUR<br>CREATIVITY.</h1>
+      
+      <p style="margin-top: 15px;">
+        Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.
+      </p>
     </header>
 
     <!-- Sección de Aportaciones y Estado -->
-    <section class="panel-aportacion">
+    <section class="panel-aportacion" style="margin-top: 20px;">
       <h2>Apoyo al Proyecto</h2>
       <p id="pay-msg">Cargando estado de disponibilidad...</p>
 
@@ -40,7 +46,7 @@
     </section>
 
     <!-- Sección de Consola de IA (Interfaz de Peticiones) -->
-    <section class="panel-chat" style="margin-top: 20px;">
+    <section class="panel-chat" style="margin-top: 20px; position: relative;">
       <h2>Consola de IA</h2>
       <div class="chat-inputs">
         <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4" style="width: 100%; padding: 10px; border-radius: 8px; box-sizing: border-box;"></textarea>
@@ -51,11 +57,14 @@
         <strong>Respuesta:</strong>
         <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
       </div>
+
+      <!-- Mascota decorativa inferior sutil -->
+      <div style="text-align: right; margin-top: 10px; font-size: 1.2rem;">🤖</div>
     </section>
   </main>
 
-  <!-- Carga de Scripts apuntando a la carpeta js con control de versión -->
-  <script src="js/onboarding.js?v=2"></script>
-  <script src="js/web.js?v=2"></script>
+  <!-- Carga de Scripts con control de versión actualizado -->
+  <script src="js/onboarding.js?v=3"></script>
+  <script src="js/web.js?v=3"></script>
 </body>
 </html>
