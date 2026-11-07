@@ -4,8 +4,8 @@
   --accent-color: #00ffcc;        /* Cian neón principal */
   --accent-secondary: #ff007f;    /* Fucsia de contraste */
   --accent-glow: rgba(0, 255, 204, 0.4);
-  --text-main: #e2e8f0;
-  --text-muted: #64748b;
+  --text-main: #e0fbfc;           /* Blanco tecnológico con subtono cian (¡Adiós al blanco plano!) */
+  --text-muted: #8ca3af;          /* Gris tecnológico legible */
   --border-color: #00ffcc44;
   --radius-sm: 2px;
   --radius-md: 4px;
@@ -26,9 +26,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* Líneas de escaneo estilo monitor CRT */
-  background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%);
-  background-size: 100% 4px;
+  
+  /* FONDO CYBERPUNK / VIDEOJUEGO: Cuadrícula digital + líneas CRT */
+  background-image: 
+    linear-gradient(rgba(0, 255, 204, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 204, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+  background-size: 40px 40px, 40px 40px, 100% 4px;
 }
 
 .container {
@@ -38,7 +42,7 @@ body {
   padding: 1.5rem;
 }
 
-/* Tarjetas HUD Cyberpunk inspiradas en la referencia */
+/* Tarjetas HUD Cyberpunk */
 .card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -51,7 +55,7 @@ body {
   transition: all var(--transition-fast);
 }
 
-/* Esquina cortada tecnológica superior derecha */
+/* Esquina cortada tecnológica */
 .card::after {
   content: '';
   position: absolute;
@@ -70,19 +74,19 @@ body {
   transform: translateY(-2px);
 }
 
-/* Títulos y textos con estética de terminal */
+/* Títulos con brillo sutil estilo holograma */
 h1, h2, h3, h4 {
   color: var(--text-main);
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
+  text-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
 }
 
 p, span, label {
   color: var(--text-main);
 }
 
-/* Enlaces y textos que antes salían en azul estándar */
 a {
   color: var(--accent-color);
   text-decoration: none;
@@ -122,8 +126,7 @@ a:hover {
   transform: scale(1.02);
 }
 
-/* --- ESTILIZADO DE CONTROLES DE APORTE (Sliders e Inputs) --- */
-
+/* Controles de aporte y inputs */
 input[type="text"], input[type="number"] {
   background-color: #03050b;
   border: 1px solid var(--border-color);
@@ -134,19 +137,12 @@ input[type="text"], input[type="number"] {
   outline: none;
 }
 
-input[type="text"]:focus, input[type="number"]:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
-
-/* Personalización de la barra deslizadora (Range) */
 input[type="range"] {
   accent-color: var(--accent-color);
   background: #03050b;
   cursor: pointer;
 }
 
-/* Botones de montos ($0, $5, $10, etc.) */
 button:not(.btn-primary) {
   background-color: #080b14;
   color: var(--text-main);
