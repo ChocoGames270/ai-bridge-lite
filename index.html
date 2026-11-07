@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <!-- Enlace al diseño Cyberpunk corregido -->
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <!-- Enlace al CSS actualizado con control de caché -->
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
   <main class="container">
-    <header style="position: relative;">
-      <!-- Mascota / Icono de Robot decorativo superior -->
-      <div class="bot-mascot" style="font-size: 1.5rem; margin-bottom: 5px;">🤖</div>
+    <header>
+      <!-- Mascota superior en estilo Pixel Art retro -->
+      <div class="pixel-bot">[<span>■</span>-<span>■</span>] 🤖</div>
       
       <h1>ONE BRIDGE.<br>EVERY AI. YOUR<br>CREATIVITY.</h1>
       
-      <p style="margin-top: 15px;">
+      <p>
         Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.
       </p>
     </header>
 
     <!-- Sección de Aportaciones y Estado -->
-    <section class="panel-aportacion" style="margin-top: 20px;">
+    <section class="panel-aportacion">
       <h2>Apoyo al Proyecto</h2>
       <p id="pay-msg">Cargando estado de disponibilidad...</p>
 
@@ -46,25 +46,27 @@
     </section>
 
     <!-- Sección de Consola de IA (Interfaz de Peticiones) -->
-    <section class="panel-chat" style="margin-top: 20px; position: relative;">
+    <section class="panel-chat">
       <h2>Consola de IA</h2>
       <div class="chat-inputs">
-        <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4" style="width: 100%; padding: 10px; border-radius: 8px; box-sizing: border-box;"></textarea>
-        <button id="btn-enviar-ai" class="btn-primary" style="margin-top: 10px; padding: 10px 20px;">Enviar a la IA</button>
+        <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4"></textarea>
+        <button id="btn-enviar-ai" class="btn-primary" style="margin-top: 10px;">Enviar a la IA</button>
       </div>
       
-      <div class="chat-response" style="margin-top: 15px; background: #05060a; padding: 12px; border-radius: 8px; min-height: 50px;">
+      <div class="chat-response">
         <strong>Respuesta:</strong>
         <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
       </div>
 
-      <!-- Mascota decorativa inferior sutil -->
-      <div style="text-align: right; margin-top: 10px; font-size: 1.2rem;">🤖</div>
+      <!-- Mascota inferior en estilo Pixel Art -->
+      <div style="text-align: right; margin-top: 12px;">
+        <span class="pixel-bot">&lt;[<span>•</span>_<span>•</span>]&gt;</span>
+      </div>
     </section>
   </main>
 
-  <!-- Carga de Scripts con control de versión actualizado -->
-  <script src="js/onboarding.js?v=3"></script>
-  <script src="js/web.js?v=3"></script>
+  <!-- Carga de Scripts -->
+  <script src="js/onboarding.js?v=4"></script>
+  <script src="js/web.js?v=4"></script>
 </body>
 </html>
