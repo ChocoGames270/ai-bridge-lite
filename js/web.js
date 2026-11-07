@@ -1,5 +1,5 @@
-/* AI Bridge Lite - Web: aportaciones + estado + cliente de peticiones (BYOK) */
-(function () {
+/* AI Bridge Lite - Web: aportaciones + estado + cliente de peticiones (BYOK) + UI */
+(function (global) {
   "use strict";
 
   // 1. Sincronización inicial con el Onboarding
@@ -19,6 +19,7 @@
     }
   }
 
+  // 2. Control Visual de Aportaciones y Estado Preventivo
   const MIN = 0;
   const MAX = 100;
 
@@ -74,7 +75,6 @@
 
     input.addEventListener("input", () => actualizar(input.value, "input"));
     input.addEventListener("blur", () => actualizar(input.value));
-    slider.slider?.addEventListener?.("input", () => actualizar(slider.value, "slider"));
     slider.addEventListener("input", () => actualizar(slider.value, "slider"));
 
     chips.forEach((c) =>
@@ -84,9 +84,7 @@
     actualizar(0);
   }
 
-  // ==========================================
-  // 2. CLIENTE DE PETICIONES HTTP DIRECTO (BYOK)
-  // ==========================================
+  // 3. Cliente de Peticiones HTTP Directo (BYOK)
   const ENDPOINTS = {
     gemini: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
     claude: "https://api.anthropic.com/v1/messages",
@@ -166,9 +164,41 @@
     return JSON.stringify(data);
   }
 
-  // Exponemos el cliente globalmente por si lo llamas desde la interfaz
+  // Exposición global del cliente de peticiones
   global.AIBridgeClient = {
     enviarPeticion
   };
+
+  // 4. Conexión de la Interfaz (Consola de IA) con el Cliente HTTP
+  const btnEnviar = $("btn-enviar-ai");
+  const txtPrompt = $("user-prompt");
+  const boxOutput = $("ai-output");
+
+  if (btnEnviar && txtPrompt && boxOutput) {
+    btnEnviar.addEventListener("click", async () => {
+      const intencion = txtPrompt.value.trim();
+
+      if (!intencion) {
+        boxOutput.textContent = "Por favor, escribe una consulta antes de enviar.";
+        return;
+      }
+
+      boxOutput.textContent = "Enviando petición a la IA...";
+      btnEnviar.disabled = true;
+
+      try {
+        const respuesta = await global.AIBridgeClient.enviarPeticion({
+          prompt_intencion: intencion,
+          perfil_seleccionado: "scripts"
+        });
+
+        boxOutput.textContent = respuesta;
+      } catch (error) {
+        boxOutput.textContent = `Error: ${error.message}`;
+      } finally {
+        btnEnviar.disabled = false;
+      }
+    });
+  }
 
 })(window);
