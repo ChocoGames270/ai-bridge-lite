@@ -114,11 +114,19 @@
     },
 
     setKey(proveedor, valor) {
+        setKey(proveedor, valor) {
       if (!PROVEEDORES.includes(proveedor)) return false;
 
-      cfg.api_keys[proveedor] = String(valor || "").trim();
+      // Limpieza y sanitización básica del input de la API Key
+      const keyLimpia = String(valor || "").trim();
+      cfg.api_keys[proveedor] = keyLimpia;
 
-      const activa = cfg.api_keys[cfg.proveedor_activo];
+      // Advertencia de seguridad en consola para entornos de desarrollo
+      if (keyLimpia.length > 0 && keyLimpia.length < 10) {
+        console.warn("[AI Bridge Lite Security]: La API Key proporcionada parece incompleta.");
+      }
+
+      const activa = cfg.api_keys[proveedor_activo];
 
       if (!activa) {
         const alt = PROVEEDORES.find(p => cfg.api_keys[p]);
@@ -131,52 +139,22 @@
       return save();
     },
 
-    setProveedorActivo(p) {
-      if (!PROVEEDORES.includes(p)) return false;
-
-      cfg.proveedor_activo = p;
-      return save();
-    },
-
-    next() {
-      if (!validarPaso(paso)) {
-        return {
-          ok: false,
-          error: "paso_invalido"
-        };
-      }
-
-      if (paso < PASOS.length - 1) {
-        paso++;
-
-        return {
-          ok: true,
-          paso: PASOS[paso]
-        };
-      }
-
-      cfg.completado = true;
-      save();
-
-      return {
-        ok: true,
-        fin: true
-      };
-    },
-
-    back() {
-      if (paso > 0) paso--;
-      return PASOS[paso];
-    },
-
     reset() {
       try {
+        // Borrado total y seguro del almacenamiento local
         localStorage.removeItem(KEY);
-      } catch (e) {}
+        // Limpieza explícita en memoria de las credenciales sensibles
+        PROVEEDORES.forEach(p => {
+          if (cfg.api_keys[p]) cfg.api_keys[p] = "";
+        });
+      } catch (e) {
+        console.error("[AI Bridge Lite Error]: No se pudo limpiar el almacenamiento local.", e);
+      }
 
       cfg = clone(DEFAULT);
       paso = 0;
     },
+
 
     buildPayload(datos) {
       const key = cfg.api_keys[cfg.proveedor_activo];
