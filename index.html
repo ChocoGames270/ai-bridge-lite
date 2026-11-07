@@ -4,27 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <!-- Enlace al CSS actualizado con control de caché -->
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <!-- Enlace actualizado con control de caché -->
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
 
   <main class="container">
-    <header>
-      <!-- Mascota superior en estilo Pixel Art retro -->
-      <div class="pixel-bot">[<span>■</span>-<span>■</span>] 🤖</div>
-      
-      <h1>ONE BRIDGE.<br>EVERY AI. YOUR<br>CREATIVITY.</h1>
-      
-      <p>
-        Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.
-      </p>
+    <!-- HERO / BIENVENIDA -->
+    <header id="hero" class="card">
+      <h1>
+        <span class="cyber-pet-static">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="11" y="1" width="2" height="3" fill="#00ffcc"/>
+            <rect x="10" y="0" width="4" height="1" fill="#00ffcc"/>
+            <rect x="4" y="4" width="16" height="12" fill="#ff007f" rx="1"/>
+            <rect x="2" y="7" width="2" height="6" fill="#00ffcc"/>
+            <rect x="20" y="7" width="2" height="6" fill="#00ffcc"/>
+            <rect x="6" y="6" width="12" height="8" fill="#020205"/>
+            <rect x="8" y="8" width="3" height="2" fill="#ff007f"/>
+            <rect x="13" y="8" width="3" height="2" fill="#ff007f"/>
+            <rect x="9" y="11" width="6" height="1" fill="#00ffcc"/>
+            <rect x="5" y="18" width="3" height="4" fill="#00ffcc"/>
+            <rect x="16" y="18" width="3" height="4" fill="#00ffcc"/>
+            <rect x="4" y="21" width="2" height="2" fill="#ff007f"/>
+            <rect x="18" y="21" width="2" height="2" fill="#ff007f"/>
+          </svg>
+        </span>
+        <span data-copy="hero_titulo">One bridge. Every AI. Your creativity.</span>
+      </h1>
+      <p data-copy="hero_subtitulo">Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.</p>
     </header>
 
-    <!-- Sección de Aportaciones y Estado -->
-    <section class="panel-aportacion">
+    <!-- TARJETA DE APORTE Y ESTADO -->
+    <section class="card panel-aportacion">
       <h2>Apoyo al Proyecto</h2>
-      <p id="pay-msg">Cargando estado de disponibilidad...</p>
+      <p id="pay-msg" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Cargando estado de disponibilidad...</p>
 
       <div class="controles-pago">
         <input type="number" id="pay-amount" min="0" max="100" value="0" step="1">
@@ -45,8 +59,8 @@
       </div>
     </section>
 
-    <!-- Sección de Consola de IA (Interfaz de Peticiones) -->
-    <section class="panel-chat">
+    <!-- TARJETA DE CONSOLA DE IA -->
+    <section class="card panel-chat">
       <h2>Consola de IA</h2>
       <div class="chat-inputs">
         <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4"></textarea>
@@ -57,16 +71,30 @@
         <strong>Respuesta:</strong>
         <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
       </div>
-
-      <!-- Mascota inferior en estilo Pixel Art -->
-      <div style="text-align: right; margin-top: 12px;">
-        <span class="pixel-bot">&lt;[<span>•</span>_<span>•</span>]&gt;</span>
-      </div>
     </section>
   </main>
 
+  <!-- MASCOTA FLOTANTE EN ESQUINA INFERIOR DERECHA -->
+  <div class="cyber-pet-float">
+    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="11" y="1" width="2" height="3" fill="#00ffcc"/>
+      <rect x="10" y="0" width="4" height="1" fill="#00ffcc"/>
+      <rect x="4" y="4" width="16" height="12" fill="#ff007f" rx="1"/>
+      <rect x="2" y="7" width="2" height="6" fill="#00ffcc"/>
+      <rect x="20" y="7" width="2" height="6" fill="#00ffcc"/>
+      <rect x="6" y="6" width="12" height="8" fill="#020205"/>
+      <rect x="8" y="8" width="3" height="2" fill="#ff007f"/>
+      <rect x="13" y="8" width="3" height="2" fill="#ff007f"/>
+      <rect x="9" y="11" width="6" height="1" fill="#00ffcc"/>
+      <rect x="5" y="18" width="3" height="4" fill="#00ffcc"/>
+      <rect x="16" y="18" width="3" height="4" fill="#00ffcc"/>
+      <rect x="4" y="21" width="2" height="2" fill="#ff007f"/>
+      <rect x="18" y="21" width="2" height="2" fill="#ff007f"/>
+    </svg>
+  </div>
+
   <!-- Carga de Scripts -->
-  <script src="js/onboarding.js?v=4"></script>
-  <script src="js/web.js?v=4"></script>
+  <script src="js/onboarding.js?v=5"></script>
+  <script src="js/web.js?v=5"></script>
 </body>
 </html>
