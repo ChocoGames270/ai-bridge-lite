@@ -1,4 +1,3 @@
-
 /* AI Bridge Lite - Onboarding (LocalStorage) */
 (function (global) {
   "use strict";
@@ -114,7 +113,6 @@
     },
 
     setKey(proveedor, valor) {
-        setKey(proveedor, valor) {
       if (!PROVEEDORES.includes(proveedor)) return false;
 
       // Limpieza y sanitización básica del input de la API Key
@@ -197,7 +195,6 @@
       const key = cfg.api_keys[cfg.proveedor_activo];
 
       // Sin clave no se genera un payload BYOK.
-      // El modo de servicio propio deberá gestionarse por separado.
       if (!key || key.length < 10) return null;
 
       const p = {
