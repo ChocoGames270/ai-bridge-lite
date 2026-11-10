@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
+  <meta name="description" content="Conecta tus modelos de inteligencia artificial favoritos con tu entorno de desarrollo. Comparte código, capturas y referencias visuales.">
 
   <!-- PWA (rutas relativas: funcionan en la subruta de GitHub Pages) -->
   <link rel="manifest" href="manifest.json">
@@ -18,8 +19,7 @@
           Para ver la landing aunque esté instalada: añade ?landing=1 a la URL. -->
   <script>
     (function () {
-      // ⚠ CAMBIA esta URL por la de tu Repositorio 2 (con "/" al final).
-      var CONSOLE_URL = "https://TU-USUARIO.github.io/TU-REPO-2/";
+      var CONSOLE_URL = "https://chocogames270.github.io/bridge-lite2/";
 
       var standalone =
         (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
@@ -48,27 +48,30 @@
   </script>
 
   <!-- Estética Cyberpunk original (no modificar) -->
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=7">
 
-  <!-- Solo para las secciones de texto nuevas; usa las mismas variables del tema -->
+  <!-- Solo para las secciones de texto; usa las mismas variables del tema -->
   <style>
     .lista-hud { list-style: none; margin: 0.5rem 0 0; }
     .lista-hud li { position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem; }
     .lista-hud li::before { content: "▸"; position: absolute; left: 0; color: var(--accent-secondary); }
     .card h3 { font-size: 1rem; margin: 0.9rem 0 0.4rem; color: var(--accent-color); }
     .card p + p { margin-top: 0.6rem; }
+    .eslogan-es { color: var(--accent-secondary); font-size: 0.85rem; letter-spacing: 1px; margin-top: 0.6rem; }
+    .etiqueta-pago { display: block; margin-bottom: 0.4rem; font-weight: bold; }
     details { border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-top: 0.6rem; background: #03050b; }
     summary { cursor: pointer; padding: 0.7rem 0.9rem; min-height: 44px; font-weight: bold; color: var(--accent-color); }
     details[open] summary { border-bottom: 1px solid var(--border-color); }
     details p { padding: 0.7rem 0.9rem; }
     footer.pie { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 0.5rem 0 5rem; }
+    footer.pie p { color: var(--text-muted); }
   </style>
 </head>
 <body>
 
   <main class="container">
 
-    <!-- HERO / BIENVENIDA -->
+    <!-- 1. HERO / PRESENTACIÓN -->
     <header id="hero" class="card">
       <h1>
         <span class="cyber-pet-static">
@@ -90,30 +93,37 @@
         </span>
         <span data-copy="hero_titulo">One bridge. Every AI. Your creativity.</span>
       </h1>
-      <p data-copy="hero_subtitulo">Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.</p>
+      <p data-copy="hero_subtitulo">Conecta tus modelos de inteligencia artificial favoritos con tu entorno de desarrollo. Comparte código, capturas y referencias visuales para recibir ayuda técnica contextualizada mientras creas.</p>
+      <p class="eslogan-es" data-copy="hero_eslogan_es">Un puente. Todas las IA. Tu creatividad.</p>
+      <a id="btn-hero" href="#descarga" class="btn-primary" data-copy="hero_boton">Descargar AI Bridge Lite — Gratis</a>
     </header>
 
-    <!-- CARACTERÍSTICAS -->
+    <!-- 2. CARACTERÍSTICAS -->
     <section id="caracteristicas" class="card">
-      <h2 data-copy="feat_titulo">[TEXTO_CHATGPT: título de características]</h2>
-      <h3 data-feature="captura">[TEXTO_CHATGPT: título captura]</h3>
-      <p>[TEXTO_CHATGPT: descripción captura]</p>
-      <h3 data-feature="codigo">[TEXTO_CHATGPT: título extracción de código]</h3>
-      <p>[TEXTO_CHATGPT: descripción extracción de código]</p>
-      <h3 data-feature="secuencia">[TEXTO_CHATGPT: título Modo Secuencia]</h3>
-      <p>[TEXTO_CHATGPT: descripción Modo Secuencia]</p>
-      <h3 data-feature="perfiles">[TEXTO_CHATGPT: título perfiles de intención]</h3>
-      <p>[TEXTO_CHATGPT: descripción perfiles]</p>
+      <h2 data-copy="feat_titulo">Tu entorno de desarrollo, conectado con IA.</h2>
+
+      <h3 data-feature="captura">01. Comprensión visual</h3>
+      <p>Comparte capturas de tu entorno de desarrollo para que la IA pueda analizar escenas, interfaces, objetos y referencias visuales.</p>
+
+      <h3 data-feature="codigo">02. Análisis de código</h3>
+      <p>Comparte fragmentos de código, identifica posibles errores y recibe explicaciones y propuestas de solución.</p>
+
+      <h3 data-feature="secuencia">03. Secuencias y referencias</h3>
+      <p>Envía secuencias de imágenes para explicar movimientos, animaciones y cambios visuales de manera más precisa.</p>
+
+      <h3 data-feature="perfiles">04. Perfiles inteligentes</h3>
+      <p>Adapta tus consultas a diferentes necesidades: trabajo visual, programación, tareas híbridas y optimización.</p>
     </section>
 
-    <!-- TARJETA DE APORTE Y DESCARGA / INSTALACIÓN -->
+    <!-- 3. DESCARGA Y APORTACIONES -->
     <section class="card panel-aportacion">
-      <h2 data-copy="pago_titulo">Apoyo al Proyecto</h2>
-      <p id="pay-msg" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Cargando estado de disponibilidad...</p>
+      <h2 data-copy="pago_titulo">Empieza gratis. Apoya si quieres.</h2>
+      <label class="etiqueta-pago" for="pay-amount" data-copy="pago_label">¿Cuánto quieres aportar para apoyar AI Bridge Lite?</label>
+      <p id="pay-msg" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">¡Perfecto! Puedes comenzar con una contribución de $0. Descarga AI Bridge Lite y descubre todo lo que puedes crear.</p>
 
       <div class="controles-pago">
         <input type="number" id="pay-amount" min="0" max="100" value="0" step="1" inputmode="numeric">
-        <input type="range" id="pay-slider" min="0" max="100" value="0" step="1">
+        <input type="range" id="pay-slider" min="0" max="100" value="0" step="1" aria-label="Monto a aportar en USD">
       </div>
 
       <div class="chips-container">
@@ -124,48 +134,58 @@
       </div>
 
       <div class="accion-descarga" id="descarga">
-        <a id="btn-apk" href="#" role="button" class="btn-disabled">
-          <span id="btn-apk-label">Aplicación próximamente</span>
+        <a id="btn-apk" href="#" role="button" class="btn-primary">
+          <span id="btn-apk-label">Descargar AI Bridge Lite — Gratis</span>
         </a>
       </div>
-      <p data-copy="apk_info" style="color: var(--text-muted); font-size: 0.8rem;">[TEXTO_CHATGPT: información de la app, requisitos]</p>
     </section>
 
-    <!-- SUSCRIPCIÓN -->
+    <!-- 4. SUSCRIPCIONES -->
     <section id="suscripcion" class="card">
-      <h2 data-copy="sub_titulo">[TEXTO_CHATGPT: título suscripción]</h2>
+      <h2 data-copy="sub_titulo">Planes para cada proyecto.</h2>
       <ul class="lista-hud">
-        <li data-benefit="sub-1">[TEXTO_CHATGPT: ventaja 1]</li>
-        <li data-benefit="sub-2">[TEXTO_CHATGPT: ventaja 2]</li>
-        <li data-benefit="sub-3">[TEXTO_CHATGPT: ventaja 3]</li>
+        <li data-benefit="sub-1">Opciones accesibles para distintos niveles de uso.</li>
+        <li data-benefit="sub-2">Beneficios y límites explicados con transparencia.</li>
+        <li data-benefit="sub-3">Cancela fácilmente, sin compromisos ocultos.</li>
       </ul>
+      <div class="btn-disabled" role="button" aria-disabled="true" data-copy="sub_boton">Planes próximamente.</div>
     </section>
 
-    <!-- CRÉDITOS -->
+    <!-- 5. CRÉDITOS -->
     <section id="creditos" class="card">
-      <h2 data-copy="cred_titulo">[TEXTO_CHATGPT: título créditos]</h2>
+      <h2 data-copy="cred_titulo">Créditos flexibles.</h2>
       <ul class="lista-hud">
-        <li data-benefit="cred-1">[TEXTO_CHATGPT: ventaja 1]</li>
-        <li data-benefit="cred-2">[TEXTO_CHATGPT: ventaja 2]</li>
-        <li data-benefit="cred-3">[TEXTO_CHATGPT: ventaja 3]</li>
+        <li data-benefit="cred-1">Consulta el coste antes de realizar solicitudes de pago.</li>
+        <li data-benefit="cred-2">Diferenciación clara entre créditos comprados y promocionales.</li>
+        <li data-benefit="cred-3">Sin caducidad arbitraria de los créditos comprados.</li>
       </ul>
     </section>
 
-    <!-- PREGUNTAS FRECUENTES -->
+    <!-- 6. PREGUNTAS FRECUENTES -->
     <section id="faq" class="card">
-      <h2 data-copy="faq_titulo">[TEXTO_CHATGPT: título FAQ]</h2>
+      <h2 data-copy="faq_titulo">Preguntas frecuentes</h2>
       <details>
-        <summary>[TEXTO_CHATGPT: pregunta 1]</summary>
-        <p>[TEXTO_CHATGPT: respuesta 1]</p>
+        <summary>¿Qué es AI Bridge Lite?</summary>
+        <p>Es un proyecto diseñado para conectar herramientas de desarrollo con distintos asistentes de inteligencia artificial, facilitando el intercambio de código, imágenes y contexto.</p>
       </details>
       <details>
-        <summary>[TEXTO_CHATGPT: pregunta 2]</summary>
-        <p>[TEXTO_CHATGPT: respuesta 2]</p>
+        <summary>¿AI Bridge Lite será gratuito?</summary>
+        <p>La propuesta contempla un acceso gratuito desde $0 USD, con aportaciones voluntarias y opciones adicionales de uso. Los servicios de pago se anunciarán cuando estén disponibles.</p>
       </details>
     </section>
 
+    <!-- 8. IDENTIDAD DEL PROYECTO: BYOK y filosofía -->
+    <section id="byok" class="card">
+      <h2 data-copy="byok_titulo">BYOK — Bring Your Own Key</h2>
+      <p data-copy="byok_texto">El usuario puede utilizar sus propias claves API. AI Bridge Lite no cobra créditos propios por esas solicitudes, aunque el proveedor de IA puede aplicar sus propias tarifas y límites.</p>
+      <h3>Filosofía</h3>
+      <p data-copy="filosofia">Una experiencia accesible desde $0 USD, con monetización transparente y sin restricciones agresivas.</p>
+    </section>
+
+    <!-- 7. FOOTER -->
     <footer class="pie">
-      <small data-copy="footer">[TEXTO_CHATGPT: pie de página]</small>
+      <p data-copy="footer_1">AI Bridge Lite — One bridge. Every AI. Your creativity.</p>
+      <p data-copy="footer_2">Hecho para que tus ideas lleguen más lejos.</p>
     </footer>
 
   </main>
@@ -200,7 +220,20 @@
     }
   </script>
 
+  <!-- El botón del hero baja suavemente a la tarjeta de instalación (sin cambiar la URL) -->
+  <script>
+    (function () {
+      var b = document.getElementById("btn-hero");
+      if (!b) return;
+      b.addEventListener("click", function (e) {
+        e.preventDefault();
+        var d = document.getElementById("descarga");
+        if (d && d.scrollIntoView) d.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    })();
+  </script>
+
   <!-- Slider de aportes + botón de instalación PWA -->
-  <script src="js/web.js?v=6"></script>
+  <script src="js/web.js?v=7"></script>
 </body>
 </html>
