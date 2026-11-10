@@ -4,12 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Bridge Lite</title>
-  <!-- Enlace actualizado con control de caché -->
-  <link rel="stylesheet" href="css/styles.css?v=5">
+
+  <!-- PWA (rutas relativas: funcionan en la subruta de GitHub Pages) -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="theme-color" content="#020205">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Bridge Lite">
+
+  <!-- 1. Si se abre como PWA instalada, va directo a la consola (Repositorio 2).
+          Para ver la landing aunque esté instalada: añade ?landing=1 a la URL. -->
+  <script>
+    (function () {
+      // ⚠ CAMBIA esta URL por la de tu Repositorio 2 (con "/" al final).
+      var CONSOLE_URL = "https://TU-USUARIO.github.io/TU-REPO-2/";
+
+      var standalone =
+        (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) ||
+        window.navigator.standalone === true;
+      var forzarLanding = /[?&]landing=1/.test(window.location.search);
+      var urlConfigurada = CONSOLE_URL.indexOf("TU-USUARIO") === -1;
+
+      if (standalone && !forzarLanding && urlConfigurada) {
+        window.location.replace(CONSOLE_URL);
+      }
+    })();
+  </script>
+
+  <!-- 2. Captura el instalador nativo lo antes posible -->
+  <script>
+    window.__pwaInstall = null;
+    window.addEventListener("beforeinstallprompt", function (e) {
+      e.preventDefault();
+      window.__pwaInstall = e;
+      window.dispatchEvent(new Event("pwa-install-ready"));
+    });
+    window.addEventListener("appinstalled", function () {
+      window.__pwaInstall = null;
+      window.dispatchEvent(new Event("pwa-installed"));
+    });
+  </script>
+
+  <!-- Estética Cyberpunk original (no modificar) -->
+  <link rel="stylesheet" href="css/styles.css?v=6">
+
+  <!-- Solo para las secciones de texto nuevas; usa las mismas variables del tema -->
+  <style>
+    .lista-hud { list-style: none; margin: 0.5rem 0 0; }
+    .lista-hud li { position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem; }
+    .lista-hud li::before { content: "▸"; position: absolute; left: 0; color: var(--accent-secondary); }
+    .card h3 { font-size: 1rem; margin: 0.9rem 0 0.4rem; color: var(--accent-color); }
+    .card p + p { margin-top: 0.6rem; }
+    details { border: 1px solid var(--border-color); border-radius: var(--radius-sm); margin-top: 0.6rem; background: #03050b; }
+    summary { cursor: pointer; padding: 0.7rem 0.9rem; min-height: 44px; font-weight: bold; color: var(--accent-color); }
+    details[open] summary { border-bottom: 1px solid var(--border-color); }
+    details p { padding: 0.7rem 0.9rem; }
+    footer.pie { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 0.5rem 0 5rem; }
+  </style>
 </head>
 <body>
 
   <main class="container">
+
     <!-- HERO / BIENVENIDA -->
     <header id="hero" class="card">
       <h1>
@@ -35,43 +93,81 @@
       <p data-copy="hero_subtitulo">Conecta tu entorno de desarrollo con asistentes de inteligencia artificial. Comparte código, imágenes y contexto para convertir tus ideas en proyectos.</p>
     </header>
 
-    <!-- TARJETA DE APORTE Y ESTADO -->
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas" class="card">
+      <h2 data-copy="feat_titulo">[TEXTO_CHATGPT: título de características]</h2>
+      <h3 data-feature="captura">[TEXTO_CHATGPT: título captura]</h3>
+      <p>[TEXTO_CHATGPT: descripción captura]</p>
+      <h3 data-feature="codigo">[TEXTO_CHATGPT: título extracción de código]</h3>
+      <p>[TEXTO_CHATGPT: descripción extracción de código]</p>
+      <h3 data-feature="secuencia">[TEXTO_CHATGPT: título Modo Secuencia]</h3>
+      <p>[TEXTO_CHATGPT: descripción Modo Secuencia]</p>
+      <h3 data-feature="perfiles">[TEXTO_CHATGPT: título perfiles de intención]</h3>
+      <p>[TEXTO_CHATGPT: descripción perfiles]</p>
+    </section>
+
+    <!-- TARJETA DE APORTE Y DESCARGA / INSTALACIÓN -->
     <section class="card panel-aportacion">
-      <h2>Apoyo al Proyecto</h2>
+      <h2 data-copy="pago_titulo">Apoyo al Proyecto</h2>
       <p id="pay-msg" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Cargando estado de disponibilidad...</p>
 
       <div class="controles-pago">
-        <input type="number" id="pay-amount" min="0" max="100" value="0" step="1">
+        <input type="number" id="pay-amount" min="0" max="100" value="0" step="1" inputmode="numeric">
         <input type="range" id="pay-slider" min="0" max="100" value="0" step="1">
       </div>
 
       <div class="chips-container">
-        <button class="chip" data-amount="0">$0</button>
-        <button class="chip" data-amount="10">$10</button>
-        <button class="chip" data-amount="25">$25</button>
-        <button class="chip" data-amount="50">$50</button>
+        <button type="button" class="chip" data-amount="0">$0</button>
+        <button type="button" class="chip" data-amount="10">$10</button>
+        <button type="button" class="chip" data-amount="25">$25</button>
+        <button type="button" class="chip" data-amount="50">$50</button>
       </div>
 
       <div class="accion-descarga" id="descarga">
-        <a id="btn-apk" href="#" class="btn-disabled">
+        <a id="btn-apk" href="#" role="button" class="btn-disabled">
           <span id="btn-apk-label">Aplicación próximamente</span>
         </a>
       </div>
+      <p data-copy="apk_info" style="color: var(--text-muted); font-size: 0.8rem;">[TEXTO_CHATGPT: información de la app, requisitos]</p>
     </section>
 
-    <!-- TARJETA DE CONSOLA DE IA -->
-    <section class="card panel-chat">
-      <h2>Consola de IA</h2>
-      <div class="chat-inputs">
-        <textarea id="user-prompt" placeholder="Escribe tu intención o consulta técnica aquí..." rows="4"></textarea>
-        <button id="btn-enviar-ai" class="btn-primary" style="margin-top: 10px;">Enviar a la IA</button>
-      </div>
-      
-      <div class="chat-response">
-        <strong>Respuesta:</strong>
-        <p id="ai-output" style="white-space: pre-wrap; margin-top: 5px;">Esperando consulta...</p>
-      </div>
+    <!-- SUSCRIPCIÓN -->
+    <section id="suscripcion" class="card">
+      <h2 data-copy="sub_titulo">[TEXTO_CHATGPT: título suscripción]</h2>
+      <ul class="lista-hud">
+        <li data-benefit="sub-1">[TEXTO_CHATGPT: ventaja 1]</li>
+        <li data-benefit="sub-2">[TEXTO_CHATGPT: ventaja 2]</li>
+        <li data-benefit="sub-3">[TEXTO_CHATGPT: ventaja 3]</li>
+      </ul>
     </section>
+
+    <!-- CRÉDITOS -->
+    <section id="creditos" class="card">
+      <h2 data-copy="cred_titulo">[TEXTO_CHATGPT: título créditos]</h2>
+      <ul class="lista-hud">
+        <li data-benefit="cred-1">[TEXTO_CHATGPT: ventaja 1]</li>
+        <li data-benefit="cred-2">[TEXTO_CHATGPT: ventaja 2]</li>
+        <li data-benefit="cred-3">[TEXTO_CHATGPT: ventaja 3]</li>
+      </ul>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section id="faq" class="card">
+      <h2 data-copy="faq_titulo">[TEXTO_CHATGPT: título FAQ]</h2>
+      <details>
+        <summary>[TEXTO_CHATGPT: pregunta 1]</summary>
+        <p>[TEXTO_CHATGPT: respuesta 1]</p>
+      </details>
+      <details>
+        <summary>[TEXTO_CHATGPT: pregunta 2]</summary>
+        <p>[TEXTO_CHATGPT: respuesta 2]</p>
+      </details>
+    </section>
+
+    <footer class="pie">
+      <small data-copy="footer">[TEXTO_CHATGPT: pie de página]</small>
+    </footer>
+
   </main>
 
   <!-- MASCOTA FLOTANTE EN ESQUINA INFERIOR DERECHA -->
@@ -93,8 +189,18 @@
     </svg>
   </div>
 
-  <!-- Carga de Scripts -->
-  <script src="js/onboarding.js?v=5"></script>
-  <script src="js/web.js?v=5"></script>
+  <!-- Service Worker (ruta relativa) -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function (err) {
+          console.log("[PWA] No se pudo registrar el Service Worker:", err);
+        });
+      });
+    }
+  </script>
+
+  <!-- Slider de aportes + botón de instalación PWA -->
+  <script src="js/web.js?v=6"></script>
 </body>
 </html>
