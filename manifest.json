@@ -1,11 +1,10 @@
 {
-  "id": "./",
   "name": "AI Bridge Lite",
   "short_name": "Bridge Lite",
   "description": "Puente de IA para desarrollo móvil de juegos (BYOK).",
   "lang": "es",
   "start_url": "./",
-  "scope": "../",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#020205",
